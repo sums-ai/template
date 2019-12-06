@@ -13,7 +13,7 @@ module.exports = (api, options, rootOptions) => {
       "babel-plugin-import": "^1.12.2",
       "minireset.css": "^0.0.6",
       "qs": "^6.9.1",
-      "sums-components": "0.3.8",
+      "sums-components": "0.4.4",
       "vant": "^2.2.10",
       "vue-router": "^3.1.3",
       "vuex": "^3.0.1"
