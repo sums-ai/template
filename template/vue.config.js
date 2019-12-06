@@ -3,7 +3,7 @@ const path = require('path');
 const resolve = dir => path.join(__dirname, dir);
 
 const packageName = process.env.VUE_APP_BASE;
-const publicPath = process.env.NODE_ENV === 'development' ? '/' : `${process.env.VUE_APP_PATH}`;
+const publicPath = process.env.NODE_ENV === 'development' ? '/' : process.env.VUE_APP_PATH;
 
 module.exports = {
   publicPath,

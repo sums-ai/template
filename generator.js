@@ -4,6 +4,7 @@ module.exports = (api, options, rootOptions) => {
     "scripts": {
       "serve": "vue-cli-service serve",
       "build": "vue-cli-service build",
+      "build:testing": "vue-cli-service build --mode testing",
       "lint": "vue-cli-service lint",
       "commit": "npx git-cz"
     },
