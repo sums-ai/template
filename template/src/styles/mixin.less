@@ -1,0 +1,18 @@
+.size(@width:0, @height:@width) {
+  width: @width;
+  height: @height;
+}
+
+.flex-box(@content:center, @items:center, @flow:rows) {
+  display: flex;
+  align-items: @items;
+  flex-flow: @flow;
+  justify-content: @content;
+}
+
+.font(@size:28upx, @color:#000, @weight:400, @height:1.15) {
+  color: @color;
+  font-size: @size;
+  font-weight: @weight;
+  line-height: @height;
+}
