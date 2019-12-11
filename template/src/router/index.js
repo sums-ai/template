@@ -21,10 +21,18 @@ router.afterEach(() => {
 function genShareInfo() {
   const { origin } = window.location;
   const packageName = `/${process.env.VUE_APP_BASE}`;
-  // 分享链接中添加用户 uid
-  const user = getStorage('user') || {};
-  const uid = user[process.env.VUE_APP_APPID] || 0;
-  const relation = qs.stringify({ ...getStorage('relation'), uid }, { addQueryPrefix: true });
+  const query = getStorage('relation')
+  if (checkENV() === 'wechat') {
+    // 分享链接中添加用户 uid
+    const user = getStorage('user') || {};
+    const uid = user[process.env.VUE_APP_APPID] || 0;
+    query.uid = uid
+  } else {
+    // 分享链接中添加通用版的标识
+    query.is_fission = 1
+  }
+
+  const relation = qs.stringify(query, { addQueryPrefix: true });
   const link = origin + packageName + relation;
   // 分享给朋友
   const appMessage = {
