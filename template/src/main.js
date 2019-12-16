@@ -89,6 +89,6 @@ async function createUser() {
   // 如果用户产生过报告 && 第一次进入
   if (hasReport && !sessionStorage.getItem('notFirst')) {
     sessionStorage.setItem('notFirst', 1);
-    rerturn goHome();
+    return goHome();
   }
 }
