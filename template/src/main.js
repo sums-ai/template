@@ -1,13 +1,21 @@
+import { loading } from '@/components';
 import '@/plugins';
 import router from '@/router';
-import api from '@/services';
+import apis from '@/services';
 import store from '@/store';
-import { checkENV, getStorage, updateStorage } from '@/utils';
+import { checkENV, genShareInfo, getStorage, goHome, track, updateStorage } from '@/utils';
 import 'minireset.css';
 import Vue from 'vue';
 import App from './App.vue';
 
 Vue.config.productionTip = false;
+
+// 全局挂载 loading
+// 使用方法见 src/components/Loading/README
+Vue.prototype.$loading = loading;
+
+// 统计事件上报
+Vue.prototype.$track = track;
 
 const el = `#${process.env.VUE_APP_ROOT}`;
 
@@ -26,16 +34,15 @@ if (!window.__POWERED_BY_QIANKUN__) {
 /**
  * 子项目挂载前生命周期
  */
-export async function bootstrap() {}
+export async function bootstrap() {
+  await createUser();
+}
 
 export async function mount(props) {
   instance = new Vue({
     el,
     router,
     store,
-    async beforeCreate() {
-      await createUser();
-    },
     created() {
       postPV();
     },
@@ -66,13 +73,22 @@ function postPV() {
 async function createUser() {
   // 不是微信环境或者没有token直接返回
   if (checkENV() !== 'wechat' || !getStorage('token')) return;
-  // 查看本地缓存，判断用户是否已注册
-  const user = getStorage('user');
-  const currentId = process.env.VUE_APP_APP_ID;
-  if (user && user[currentId]) return; // 如果当前用户已存在 返回
+  
   // 注册用户时携带入口参数 绑定关系
+  const currentId = process.env.VUE_APP_APPID;
   const relation = getStorage('relation');
-  const { uid } = await api.createUser(relation);
+  // 获取本项目的 uid
+  const {uid,  hasReport} = await apis.createUser(relation);
+
   // uid存在表示用户注册成功，记入本地
-  if (uid) return updateStorage('user', currentId, uid);
+  if (uid) updateStorage('user', currentId, uid);
+
+  // 本地储存分享信息
+  genShareInfo();
+
+  // 如果用户产生过报告 && 第一次进入
+  if (hasReport && !sessionStorage.getItem('notFirst')) {
+    sessionStorage.setItem('notFirst', 1);
+    rerturn goHome();
+  }
 }

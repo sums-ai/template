@@ -10,7 +10,7 @@
 2. relation 分享入口参数
 3. user 用户 id
 
-```js
+```json
 // key 是 产品id
 // value 是 用户在该产品的id
 {

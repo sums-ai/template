@@ -6,14 +6,16 @@ import { checkENV } from '@/utils';
 
 const commonAPI = {
   example1: 'GET /example1',
-  example2: 'POST /example2',
+  addReport: 'POST /addReport',
   example3: 'URL /example3',
   createUser: 'POST /createUser',
+  payment: 'URL /payment',
 };
 
 const h5API = {
   example1: 'GET /h5/example1',
-  example2: 'POST /h5/example2',
+  addReport: 'POST /h5/addReport',
+  payment: 'URL /h5/payment',
 };
 
 /**

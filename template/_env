@@ -1,5 +1,5 @@
 VUE_APP_ROOT=<%= name %>-root
 VUE_APP_BASE=<%= name %>
 VUE_APP_APPID=0
+
 VUE_APP_API_TIMEOUT=5000
-VUE_APP_API_URL='http://www.example.com'

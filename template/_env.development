@@ -1,2 +1,4 @@
+VUE_APP_PATH=//localhost:5000
 VUE_APP_PORT=5000
 
+VUE_APP_API_URL='http://www.example.com'

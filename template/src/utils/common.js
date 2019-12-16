@@ -38,3 +38,38 @@ export function checkENV() {
   const isWechat = UA && /micromessenger/.test(UA);
   return isWechat ? 'wechat' : 'h5';
 }
+
+/**
+ * 获取关系
+ * @param {*} addon 添加的元素
+ */
+export function getRelation(addon = {}) {
+  const relation = getStorage('relation') || {};
+  return { ...relation, ...addon };
+}
+
+/**
+ * 获取用户uid
+ */
+export function getUID() {
+  const user = getStorage('user') || {};
+  return user[process.env.VUE_APP_APPID] || 0;
+}
+
+/**
+ * 回到老用户页
+ */
+export function goHome() {
+  return window.__S_BUS__.$emit('home', process.env.VUE_APP_APPID);
+}
+
+/**
+ * 统计事件上报
+ * @param {*} payload
+ */
+export function track(payload) {
+  return window.__S_BUS__.$emit('track', {
+    product: process.env.VUE_APP_APPID,
+    ...payload,
+  });
+}

@@ -9,7 +9,13 @@ import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
-const Example = () => import(/* webpackChunkName: "Example" */ '../views/About.vue');
+const Example = () =>
+  import(/* webpackChunkName: "Example" */ '@/views/About.vue');
+const Add = () => import(/* webpackChunkName: "Add" */ '@/views/Add.vue');
+const Report = () =>
+  import(/* webpackChunkName: "Report" */ '@/views/Report.vue');
+const Unlock = () =>
+  import(/* webpackChunkName: "Unlock" */ '@/views/Unlock.vue');
 
 const routes = [
   {
@@ -20,7 +26,17 @@ const routes = [
   {
     path: '/add',
     name: 'add',
-    component: Example, // 添加报告
+    component: Add, // 添加报告
+  },
+  {
+    path: '/report/:id',
+    name: 'report',
+    component: Report, // 报告详情
+  },
+  {
+    path: '/unlock/:id',
+    name: 'unlock',
+    component: Unlock, // 解锁引导页
   },
   {
     path: '/reports',
