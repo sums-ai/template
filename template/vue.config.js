@@ -1,4 +1,5 @@
 const path = require('path');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const resolve = dir => path.join(__dirname, dir);
 
@@ -36,6 +37,11 @@ module.exports = {
 
   configureWebpack() {
     const plugins = [];
+
+    if (process.env.NODE_ENV === 'development') {
+      const bap = new BundleAnalyzerPlugin();
+      plugins.push(bap);
+    }
 
     const output = {
       library: `${packageName}-[name]`,
