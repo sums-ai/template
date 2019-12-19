@@ -1,5 +1,5 @@
 <template>
-  <div v-show="visible">
+  <div class="loading" v-show="visible">
     <img :src="icon" />
     <div>{{ text }}</div>
   </div>
@@ -7,25 +7,36 @@
 
 <script>
 export default {
-  name: 'Loading',
+  name: "Loading",
   props: {
     visible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     text: {
       type: String,
-      default: '',
+      default: ""
     },
     icon: {
       type: String,
-      default: '',
-    },
+      default: ""
+    }
   },
   mounted() {
-    console.group('Loading 提示');
-    console.warn('请自行补充 loading 样式');
+    console.group("Loading 提示");
+    console.warn("请自行补充 loading 样式");
     console.groupEnd();
-  },
+  }
 };
 </script>
+
+<style lang="less" scoped>
+.loading {
+  position: fixed;
+  z-index: @loading;
+  top: 0;
+  left: 0;
+
+  .size(100vw, 100vh);
+}
+</style>
