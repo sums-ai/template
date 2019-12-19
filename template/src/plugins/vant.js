@@ -1,4 +1,4 @@
-import { Popup, Toast } from 'vant';
+import { Button, Dialog, Icon, Popup, Tab, Tabs, Toast } from 'vant';
 import Vue from 'vue';
 
-[Popup, Toast].forEach(item => Vue.use(item));
+[Button, Dialog, Icon, Popup, Tab, Tabs, Toast].forEach(item => Vue.use(item));
