@@ -18,8 +18,7 @@ module.exports = {
         'X-Requested-With, content-type, Authorization'
     },
     hot: true,
-    inline: true,
-    port: process.env.VUE_APP_PORT
+    inline: true
   },
 
   chainWebpack(config) {
