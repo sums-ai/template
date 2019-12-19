@@ -38,8 +38,8 @@ module.exports = {
   configureWebpack() {
     const plugins = [];
 
-    if (process.env.NODE_ENV === 'development') {
-      const bap = new BundleAnalyzerPlugin();
+    if (process.env.VUE_APP_MODE === 'development') {
+      const bap = new BundleAnalyzerPlugin({ analyzerPort: 'auto' });
       plugins.push(bap);
     }
 

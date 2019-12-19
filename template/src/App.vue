@@ -23,8 +23,6 @@ export default {
 </script>
 
 <style lang="less">
-@import "./styles/global.less";
-
 .approot {
   user-select: none;
 }
