@@ -21,7 +21,7 @@ export default {
      * 选择支付方式
      * 微信环境下直接调用微信支付
      */
-    choosePayment({ info } = {}) {
+    choosePayment(info = {}) {
       this.info = info;
       if (checkENV() === 'wechat') return this.handlePay();
       this.show = true;

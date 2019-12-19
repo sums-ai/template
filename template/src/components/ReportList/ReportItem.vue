@@ -41,21 +41,26 @@ export default {
 
 <style lang="less" scoped>
 .report-item {
-  .flex-box;
   width: 99%;
   height: 120px;
-  background: #fff;
-  border-radius: 16px;
   margin-bottom: 32px;
   padding: 0 32px;
+
+  border-radius: 16px;
+  background: #fff;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.06);
+
+  .flex-box;
   &--icon {
-    .size(48px);
     flex-shrink: 0;
+
     margin-right: 32px;
+
+    .size(48px);
   }
   &--name {
     flex: 1;
+
     .font(28px, #111, 700);
   }
   &--nav {

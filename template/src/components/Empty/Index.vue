@@ -14,7 +14,8 @@ export default {
   props: {
     placeholder: {
       type: String,
-      default: 'https://faceplus.vsuan.com/UI_daili/common--icon/empty_placeholder.png',
+      default:
+        'https://faceplus.vsuan.com/UI_daili/common--icon/empty_placeholder.png',
     },
     theme: {
       type: String,

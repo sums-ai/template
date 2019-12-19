@@ -58,18 +58,23 @@ export default {
 .delete-list {
   .flex-box(flex-start, @flow:column);
   &--button {
-    background: #fff;
     margin-top: 48px;
-    box-shadow: 0 20px 80px -4px rgba(215, 223, 232, 0.57);
+
+    transition: border-radius 0.3s ease-in-out, width 0.3s ease-in-out;
+
     border: none;
+    border-radius: 1000px;
+    background: #fff;
+    box-shadow: 0 20px 80px -4px rgba(215, 223, 232, 0.57);
+
     .size(88px);
     .flex-box;
-    border-radius: 1000px;
     .font(36px);
-    transition: border-radius 0.3s ease-in-out, width 0.3s ease-in-out;
     &__active {
       width: 216px;
+
       border-radius: 20px;
+
       font-size: 28px;
     }
   }

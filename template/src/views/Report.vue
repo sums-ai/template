@@ -13,17 +13,17 @@
 </template>
 
 <script>
-import { Payment } from "@/components";
-import { genQRUrl } from "@/utils";
+import { Payment } from '@/components';
+import { genQRUrl } from '@/utils';
 
 export default {
-  name: "Report",
+  name: 'Report',
   components: {
-    Payment
+    Payment,
   },
   data() {
     return {
-      qrURL: ""
+      qrURL: '',
     };
   },
   methods: {
@@ -44,8 +44,8 @@ export default {
      * 跳转
      */
     goto() {
-      this.$router.push({ name: "Unlock", params: { id: 777 } });
-    }
-  }
+      this.$router.push({ name: 'Unlock', params: { id: 777 } });
+    },
+  },
 };
 </script>

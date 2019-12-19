@@ -59,18 +59,23 @@ export default {
 
 <style lang="less" scoped>
 .delete-item {
-  .size(654px, 120px);
-  border-radius: 16px;
-  background: #fff;
   margin-bottom: 32px;
   padding: 0 32px;
+
+  border-radius: 16px;
+  background: #fff;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.06);
+
+  .size(654px, 120px);
   .flex-box;
   &--icon {
     flex-shrink: 0;
-    .size(72px);
-    border-radius: 1000px;
+
     margin-right: 40px;
+
+    border-radius: 1000px;
+
+    .size(72px);
   }
   &--main {
     flex: 1;

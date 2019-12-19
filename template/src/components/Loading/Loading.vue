@@ -7,26 +7,26 @@
 
 <script>
 export default {
-  name: "Loading",
+  name: 'Loading',
   props: {
     visible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     text: {
       type: String,
-      default: ""
+      default: '',
     },
     icon: {
       type: String,
-      default: ""
-    }
+      default: '',
+    },
   },
   mounted() {
-    console.group("Loading 提示");
-    console.warn("请自行补充 loading 样式");
+    console.group('Loading 提示');
+    console.warn('请自行补充 loading 样式');
     console.groupEnd();
-  }
+  },
 };
 </script>
 
@@ -36,6 +36,7 @@ export default {
   z-index: @loading;
   top: 0;
   left: 0;
+
   background: #fff;
 
   .size(100vw, 100vh);

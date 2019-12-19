@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import apis from "@/services";
-import { checkENV, updateStorage, getStorage } from "@/utils";
+import apis from '@/services';
+import { checkENV, updateStorage, getStorage } from '@/utils';
 
 export default {
-  name: "Add",
+  name: 'Add',
   data() {
     return {
-      name: ""
+      name: '',
     };
   },
   mounted() {
@@ -31,17 +31,17 @@ export default {
       const { name } = this;
       // 验证数据：姓名
       if (!name || /^\s+$/.test(name)) {
-        return this.$toast.fail({ message: "请输入姓名" });
+        return this.$toast.fail({ message: '请输入姓名' });
       }
       if (/[^\u4e00-\u9fa5\w ]/.test(name)) {
-        return this.$toast.fail({ message: "请勿输入特殊字符" });
+        return this.$toast.fail({ message: '请勿输入特殊字符' });
       }
 
-      const loading = this.$toast.loading("EXAMPLE");
+      const loading = this.$toast.loading('EXAMPLE');
 
       // 调用接口
       const payload = { name };
-      const { id = "" } = await apis.addReport(payload);
+      const { id = '' } = await apis.addReport(payload);
       // 保存报告id
       setReport(id);
 
@@ -53,9 +53,9 @@ export default {
      * 跳转报告页
      */
     goReport(id) {
-      return this.$router.replace({ name: "Report", params: { id } });
-    }
-  }
+      return this.$router.replace({ name: 'Report', params: { id } });
+    },
+  },
 };
 
 /**
@@ -63,8 +63,8 @@ export default {
  * @param {string} id h5报告id
  */
 function setReport(id) {
-  if (checkENV() === "wechat") return;
-  return updateStorage("h5report", process.env.VUE_APP_APPID, id);
+  if (checkENV() === 'wechat') return;
+  return updateStorage('h5report', process.env.VUE_APP_APPID, id);
 }
 
 /**
@@ -72,8 +72,8 @@ function setReport(id) {
  * @return {string}
  */
 function getReport() {
-  if (checkENV() === "wechat") return;
-  const h5report = getStorage("h5report");
+  if (checkENV() === 'wechat') return;
+  const h5report = getStorage('h5report');
   return h5report && h5report[process.env.VUE_APP_APPID];
 }
 </script>

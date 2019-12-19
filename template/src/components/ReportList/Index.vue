@@ -88,12 +88,15 @@ export default {
 .report-list {
   .flex-box(flex-start, @flow:column);
   &--title {
-    .font(28px, #999, 700);
-    letter-spacing: 1px;
     height: 56px;
-    .flex-box;
     padding: 0 0.5em;
+
+    letter-spacing: 1px;
+
     background: #fff;
+
+    .font(28px, #999, 700);
+    .flex-box;
     &__active {
       color: #111;
     }
@@ -105,8 +108,10 @@ export default {
   }
 
   &--all {
-    border-radius: 20px;
     margin-top: 64px;
+
+    border-radius: 20px;
+
     .size(582px, 88px);
     .flex-box;
     .font(28px, #fff, 700);
@@ -118,6 +123,7 @@ export default {
 
   &--number {
     margin-top: 24px;
+
     .font(24px, #858585);
   }
 }

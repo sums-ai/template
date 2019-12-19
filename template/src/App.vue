@@ -7,18 +7,18 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
-      rootID: process.env.VUE_APP_ROOT
+      rootID: process.env.VUE_APP_ROOT,
     };
   },
   computed: {
-    ...mapState(["keepAliveComponents"])
-  }
+    ...mapState(['keepAliveComponents']),
+  },
 };
 </script>
 

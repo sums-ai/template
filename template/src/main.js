@@ -3,7 +3,14 @@ import '@/plugins';
 import router from '@/router';
 import apis from '@/services';
 import store from '@/store';
-import { checkENV, genShareInfo, getStorage, goHome, track, updateStorage } from '@/utils';
+import {
+  checkENV,
+  genShareInfo,
+  getStorage,
+  goHome,
+  track,
+  updateStorage,
+} from '@/utils';
 import 'minireset.css';
 import Vue from 'vue';
 import App from './App.vue';
@@ -35,6 +42,7 @@ if (!window.__POWERED_BY_QIANKUN__) {
  * 子项目挂载前生命周期
  */
 export async function bootstrap() {
+  postPV();
   await createUser();
 }
 
@@ -43,9 +51,6 @@ export async function mount(props) {
     el,
     router,
     store,
-    created() {
-      postPV();
-    },
     render: h => h(App, { props }),
   });
 }
@@ -73,12 +78,12 @@ function postPV() {
 async function createUser() {
   // 不是微信环境或者没有token直接返回
   if (checkENV() !== 'wechat' || !getStorage('token')) return;
-  
+
   // 注册用户时携带入口参数 绑定关系
   const currentId = process.env.VUE_APP_APPID;
   const relation = getStorage('relation');
   // 获取本项目的 uid
-  const {uid,  hasReport} = await apis.createUser(relation);
+  const { uid, hasReport } = await apis.createUser(relation);
 
   // uid存在表示用户注册成功，记入本地
   if (uid) updateStorage('user', currentId, uid);
