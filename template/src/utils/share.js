@@ -1,6 +1,12 @@
 import QRCode from 'qrcode';
 import qs from 'qs';
-import { checkENV, getRelation, getUID, setStorage } from './common';
+import {
+  checkENV,
+  getRelation,
+  getStorage,
+  getUID,
+  setStorage
+} from './common';
 /**
  * 生成分享信息
  */
