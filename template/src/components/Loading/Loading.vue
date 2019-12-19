@@ -36,6 +36,7 @@ export default {
   z-index: @loading;
   top: 0;
   left: 0;
+  background: #fff;
 
   .size(100vw, 100vh);
 }
