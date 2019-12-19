@@ -70,6 +70,15 @@ export function goHome() {
 export function track(payload) {
   return window.__S_BUS__.$emit('track', {
     product: process.env.VUE_APP_APPID,
-    ...payload,
+    ...payload
   });
+}
+
+/**
+ * 测试用
+ * @param {*} result 返回内容
+ * @param {number} lag 延时
+ */
+export function delay(result, lag = 500) {
+  return new Promise(resolve => setTimeout(() => resolve(result), lag));
 }

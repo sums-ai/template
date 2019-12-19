@@ -18,13 +18,13 @@ export function genShareInfo() {
     title: '', // 分享标题
     desc: '', // 分享描述
     link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-    imgUrl, // 分享图标
+    imgUrl // 分享图标
   };
   // 分享到朋友圈
   const timeline = {
     title: '', // 分享标题
     link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-    imgUrl, // 分享图标
+    imgUrl // 分享图标
   };
   // 存入分享信息，用于agent项目分享
   setStorage('appMessage', appMessage);
@@ -38,7 +38,8 @@ export function genShareInfo() {
 export function genQRUrl() {
   const addon = checkENV() === 'wechat' ? { uid: getUID() } : { is_fission: 1 };
   const query = qs.stringify(getRelation(addon), { addQueryPrefix: true });
-  return location.origin + `/${process.env.VUE_APP_BASE}` + query;
+  const url = getStorage('shareDomain');
+  return url + query;
 }
 
 /**
